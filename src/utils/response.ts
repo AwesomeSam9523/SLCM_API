@@ -1,6 +1,9 @@
 import express from 'express';
 
-function successJson(res: express.Response, data: any | undefined = undefined) {
+function successJson(
+  res: express.Response,
+  data: object | undefined = undefined,
+) {
   res.status(200).json({
     success: true,
     data,

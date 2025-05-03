@@ -1,14 +1,14 @@
 import 'dotenv/config';
 import express from 'express';
 import session from 'express-session';
+import { CookieJar } from 'tough-cookie';
 import { eq } from 'drizzle-orm';
 
 import db from './db/index';
 import { login, getAttendance } from './services/lms';
 import { successJson, errorJson } from './utils/response';
 import { usersTable } from './db/schema';
-import { CookieJar } from 'tough-cookie';
-import * as process from 'node:process';
+import hashPassword from "./utils/login";
 
 const app = express();
 app.use(express.json());
@@ -28,17 +28,14 @@ app.use(
 app.post('/register', async (req: express.Request, res: express.Response) => {
   try {
     console.log(req.body);
-    let {
-      username,
-      password,
-      phno,
-    }: { username: string; password: string; phno: string } = req.body;
+    let { phno }: { phno: string } = req.body;
+    const { username, password }: { username: string; password: string } = req.body;
+    phno = phno.replace(/[^0-9]/g, '');
     const user: typeof usersTable.$inferInsert = {
       email: username.toUpperCase(),
-      password,
+      password: hashPassword(password),
       phno,
     };
-    phno = phno.replace(/[^0-9]/g, '');
 
     if (!username || !password || !phno) {
       return errorJson(
@@ -77,7 +74,6 @@ app.post('/register', async (req: express.Request, res: express.Response) => {
 app.post('/attendance', async (req: express.Request, res: express.Response) => {
   try {
     const { phno }: { phno: string } = req.body;
-    console.log(phno);
     if (!phno) {
       return errorJson(res, 400, 'Phone number is required');
     }
