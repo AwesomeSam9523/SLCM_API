@@ -1,7 +1,7 @@
 import { URLSearchParams } from 'url';
 import { fetchWithCookies } from './fetchClient';
 import { initialHeaders } from './headers';
-import {CookieJar} from "tough-cookie";
+import { CookieJar } from 'tough-cookie';
 
 async function getCookie(cookieJar: CookieJar) {
   const fetch = await fetchWithCookies(cookieJar);

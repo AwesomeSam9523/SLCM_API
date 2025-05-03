@@ -14,4 +14,4 @@ function errorJson(res: express.Response, errorCode: number, message: string) {
   });
 }
 
-export {successJson, errorJson};
+export { successJson, errorJson };
