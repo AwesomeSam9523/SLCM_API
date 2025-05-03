@@ -3,10 +3,10 @@ import express from 'express';
 import session from 'express-session';
 import {eq} from "drizzle-orm";
 
-import db from './db/index.ts';
-import { login, getAttendance } from './services/lms.ts';
-import {successJson, errorJson} from "./utils/response.ts";
-import { usersTable } from './db/schema.ts';
+import db from './db/index';
+import { login, getAttendance } from './services/lms';
+import {successJson, errorJson} from "./utils/response";
+import { usersTable } from './db/schema';
 import {CookieJar} from "tough-cookie";
 
 const app = express();

@@ -4,7 +4,6 @@
     "module": "ES2022",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "allowImportingTsExtensions": true,
     "baseUrl": "./src",
     "paths": {
       "@/*": ["*"]

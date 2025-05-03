@@ -1,6 +1,6 @@
 import { URLSearchParams } from 'url';
-import { fetchWithCookies } from './fetchClient.ts';
-import { initialHeaders } from './headers.ts';
+import { fetchWithCookies } from './fetchClient';
+import { initialHeaders } from './headers';
 import {CookieJar} from "tough-cookie";
 
 async function getCookie(cookieJar: CookieJar) {
