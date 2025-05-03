@@ -28,6 +28,7 @@ export async function getCookie() {
 }
 
 export async function login(username, password) {
+  await cookieJar.removeAllCookies();
   const cookie = await getCookie();
 
   const bodyFormData = new URLSearchParams();

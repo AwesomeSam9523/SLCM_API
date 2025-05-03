@@ -27,7 +27,6 @@ app.get('/', async (req, res) => {
   }
 
   res.send(attendance);
-  res.send('Login successful');
 });
 
 app.listen(3000, () => {
