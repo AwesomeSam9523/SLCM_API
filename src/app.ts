@@ -8,6 +8,7 @@ import { login, getAttendance } from './services/lms';
 import {successJson, errorJson} from "./utils/response";
 import { usersTable } from './db/schema';
 import {CookieJar} from "tough-cookie";
+import * as process from "node:process";
 
 const app = express();
 app.use(express.json());
@@ -111,6 +112,7 @@ app.post(
   },
 );
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Server is running on port 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
