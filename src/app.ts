@@ -8,7 +8,6 @@ import db from './db/index';
 import { login, getAttendance } from './services/lms';
 import { successJson, errorJson } from './utils/response';
 import { usersTable } from './db/schema';
-import hashPassword from "./utils/login";
 
 const app = express();
 app.use(express.json());
@@ -33,7 +32,7 @@ app.post('/register', async (req: express.Request, res: express.Response) => {
     phno = phno.replace(/[^0-9]/g, '');
     const user: typeof usersTable.$inferInsert = {
       email: username.toUpperCase(),
-      password: hashPassword(password),
+      password,
       phno,
     };
 
