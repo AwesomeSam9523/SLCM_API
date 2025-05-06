@@ -47,7 +47,7 @@ app.post('/register', async (req: express.Request, res: express.Response) => {
     const existingUser = await db
       .select()
       .from(usersTable)
-      .where(eq(usersTable.email, username))
+      .where(eq(usersTable.phno, phno))
       .execute();
 
     if (existingUser.length > 0) {
