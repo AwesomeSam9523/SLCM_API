@@ -101,6 +101,7 @@ app.post('/attendance', async (req: express.Request, res: express.Response) => {
     if (!attendance) {
       return errorJson(res, 500, 'Failed to fetch attendance');
     }
+    console.log(JSON.stringify(attendance['AttendanceSummaryList'], null, 2));
     const data = attendance['AttendanceSummaryList'].map(
       ({ CourseID, Present, Absent, Total, Percentage }) => {
         return { CourseID, Present, Absent, Total, Percentage };
