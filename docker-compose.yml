@@ -16,6 +16,6 @@ services:
     depends_on:
       - db
     ports:
-      - "3000:3000"
+      - "3241:3000"
     env_file:
       - .env
