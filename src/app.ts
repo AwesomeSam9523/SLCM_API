@@ -76,7 +76,6 @@ app.post('/attendance', async (req: express.Request, res: express.Response) => {
     if (!phno) {
       return errorJson(res, 400, 'Phone number is required');
     }
-
     const user = await db
       .select()
       .from(usersTable)
